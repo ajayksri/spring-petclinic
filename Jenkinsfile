@@ -41,10 +41,10 @@ pipeline {
           nexusArtifactUploader(
             nexusVersion: 'nexus3',
             protocol: 'http',
-            nexusUrl: 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081',
+            nexusUrl: 'ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081',
             repository: 'SpringPet',
             groupId: 'Dev',
-            version: "{env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+            version: '2.7.3',
             credentialsId: '1e30c233-ab1e-4d55-b70b-018c5b977ed3',
             artifacts: [
               [ artifactId: 'SpringPet',
