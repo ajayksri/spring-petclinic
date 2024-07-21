@@ -49,7 +49,7 @@ pipeline {
             artifacts: [
               [ artifactId: 'SpringPet',
                 classifier: '',
-                file: "${WORKSPACE}/target/spring-petclinic*.jar"
+                file: "${WORKSPACE}/target/spring-petclinic*.jar",
                 type: 'jar' ]
             ]
           )
