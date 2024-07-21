@@ -36,16 +36,16 @@ pipeline {
     }
 
     stage('Upload JAR to Nexus') {
-      credentialsId = '1e30c233-ab1e-4d55-b70b-018c5b977ed3' // Replace with your credential ID
+      credentialsId = '1e30c233-ab1e-4d55-b70b-018c5b977ed3'
       steps {
         script {
-          def nexusUrl = 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081' // Replace with your Nexus URL
+          def nexusUrl = 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081'
           def repo = 'SpringPet' // Replace with your repository name
           nexusUploader(
             nexusUrl: nexusUrl,
             repository: repo,
             credentialsId: credentialsId,
-            artifacts: [[ file: "${WORKSPACE}/target/spring-petclinic*.jar" ]] // Upload all JARs in target folder
+            artifacts: [[ file: "${WORKSPACE}/target/spring-petclinic*.jar" ]]
           )
         }
       }
