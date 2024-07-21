@@ -40,7 +40,7 @@ pipeline {
       steps {
         script {
           def nexusUrl = 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081'
-          def repo = 'SpringPet' // Replace with your repository name
+          def repo = 'SpringPet'
           nexusUploader(
             nexusUrl: nexusUrl,
             repository: repo,
