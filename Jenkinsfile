@@ -41,11 +41,20 @@ pipeline {
           def credentialsId = '1e30c233-ab1e-4d55-b70b-018c5b977ed3'
           def nexusUrl = 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081'
           def repo = 'SpringPet'
-          nexusUploader(
+          nexusArtifactUploader(
+            nexusVersion: 'nexus3',
+            protocol: 'http',
             nexusUrl: nexusUrl,
             repository: repo,
+            groupId: 'Dev',
+            version: "{env.BUILD_ID}-${env.BUILD_TIMESTAMP}"
             credentialsId: credentialsId,
-            artifacts: [[ file: "${WORKSPACE}/target/spring-petclinic*.jar" ]]
+            artifacts: [
+              [ artifactId: 'SpringPet',
+                classifier: '',
+                file: "${WORKSPACE}/target/spring-petclinic*.jar"
+                type: 'jar' ]
+            ]
           )
         }
       }
