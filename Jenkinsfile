@@ -38,17 +38,14 @@ pipeline {
     stage('Upload JAR to Nexus') {
       steps {
         script {
-          def credentialsId = '1e30c233-ab1e-4d55-b70b-018c5b977ed3'
-          def nexusUrl = 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081'
-          def repo = 'SpringPet'
           nexusArtifactUploader(
             nexusVersion: 'nexus3',
             protocol: 'http',
-            nexusUrl: nexusUrl,
-            repository: repo,
+            nexusUrl: 'http://ec2-3-110-229-202.ap-south-1.compute.amazonaws.com:8081',
+            repository: 'SpringPet',
             groupId: 'Dev',
             version: "{env.BUILD_ID}-${env.BUILD_TIMESTAMP}"
-            credentialsId: credentialsId,
+            credentialsId: '1e30c233-ab1e-4d55-b70b-018c5b977ed3',
             artifacts: [
               [ artifactId: 'SpringPet',
                 classifier: '',
